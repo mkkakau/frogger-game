@@ -49,7 +49,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-  this.sprite = 'images/char-boy.png'
+  this.sprite = 'images/char-boy.png';
   this.x = column(2);
   this.y = row(5);
   this.wins = 0;
@@ -133,5 +133,3 @@ document.addEventListener('keyup', function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
-
-
