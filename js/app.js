@@ -55,10 +55,13 @@ Player.prototype.update = function() {
     if (this.y === allEnemies[i].y) {
       var enemyButt = allEnemies[i].x;
       var enemyHead = allEnemies[i].x + tileWidth;
-      if (this.x >=  enemyButt && this.x <= enemyHead) {
-        console.log("HIT");
-        console.log("Enemy: " + enemyButt + ", " + enemyHead);
-        console.log("Player: " + this.x);
+      var playerLeft = this.x + 10;
+      var playerRight = this.x + 81;
+      // player goes left into bug
+      if (playerLeft >= enemyButt && playerLeft <= enemyHead) {
+        this.resetPlayer();
+      }
+      if (playerRight >= enemyButt && playerRight <= enemyHead) {
         this.resetPlayer();
       }
     }
@@ -89,19 +92,19 @@ Player.prototype.handleInput = function(key) {
 };
 
 Player.prototype.resetPlayer = function() {
-    this.x = column(2);
-    this.y = row(5);
+  this.x = column(2);
+  this.y = row(5);
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-allEnemies[0] = new Enemy(1,1);
-// allEnemies[1] = new Enemy(2,2);
-// allEnemies[2] = new Enemy(3,1.5);
-// allEnemies[3] = new Enemy(1,3.5);
-// allEnemies[4] = new Enemy(2,1);
-// allEnemies[5] = new Enemy(3,.5);
+allEnemies[0] = new Enemy(1,1.2);
+allEnemies[1] = new Enemy(2,2.1);
+allEnemies[2] = new Enemy(3,1.3);
+allEnemies[3] = new Enemy(1,3.6);
+allEnemies[4] = new Enemy(2,1.8);
+allEnemies[5] = new Enemy(3,0.5);
 
 // Place the player object in a variable called player
 var player = new Player();
