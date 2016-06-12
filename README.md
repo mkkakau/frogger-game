@@ -11,6 +11,7 @@ How to Start
   OR
 
 * Clone the repository and open index.html
+
   `git clone https://github.com/mkkakau/frogger-game.git`
 
 Gameplay
