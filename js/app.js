@@ -1,13 +1,17 @@
-var tileWidth = 101;
-var tileHeight = 83;
-var offset = 15;
+var TILE_WIDTH = 101;
+var TILE_HEIGHT = 83;
+var OFFSET = 15;
 
+// converts column number to x-coordinate in pixels
+// column(0) is first column, column(-1) is off canvas
 function column(x) {
-  return x * tileWidth;
+  return x * TILE_WIDTH;
 }
 
+// converts rows to y-coordinate in pixels
+// row(0) is first row
 function row(y) {
-  return y * tileHeight - offset;
+  return y * TILE_HEIGHT - OFFSET;
 }
 
 // Enemies our player must avoid
@@ -18,10 +22,10 @@ var Enemy = function(y, speed) {
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
   this.sprite = 'images/enemy-bug.png';
-  //start enemy off screen
+  //start enemy off canvas
   this.x = column(-1);
   this.y = row(y);
-  this.speed = speed * tileWidth;
+  this.speed = speed * TILE_WIDTH;
 };
 
 // Update the enemy's position, required method for game
@@ -48,16 +52,17 @@ var Player = function() {
   this.sprite = 'images/char-boy.png'
   this.x = column(2);
   this.y = row(5);
+  this.wins = 0;
 };
 
+// Handles collisions and resets on hit
 Player.prototype.update = function() {
   for (var i = 0; i < allEnemies.length; i++) {
     if (this.y === allEnemies[i].y) {
       var enemyButt = allEnemies[i].x;
-      var enemyHead = allEnemies[i].x + tileWidth;
+      var enemyHead = allEnemies[i].x + TILE_WIDTH;
       var playerLeft = this.x + 10;
       var playerRight = this.x + 81;
-      // player goes left into bug
       if (playerLeft >= enemyButt && playerLeft <= enemyHead) {
         this.resetPlayer();
       }
@@ -74,27 +79,33 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(key) {
   if (key === 'left' && this.x > column(0)) {
-    this.x = this.x - tileWidth;
+    this.x = this.x - TILE_WIDTH;
   }
   else if (key === 'right' && this.x < column(4)) {
-    this.x = this.x + tileWidth;
+    this.x = this.x + TILE_WIDTH;
   }
   else if (key === 'up' && this.y > row(0)) {
-    this.y = this.y - tileHeight;
+    this.y = this.y - TILE_HEIGHT;
   }
   else if (key === 'down' && this.y < row(5)) {
-    this.y = this.y + tileHeight;
+    this.y = this.y + TILE_HEIGHT;
   }
 
-  if(this.y === row(0)){
-    this.resetPlayer();
+  if (this.y === row(0)) {
+    this.win();
   }
 };
 
 Player.prototype.resetPlayer = function() {
   this.x = column(2);
   this.y = row(5);
-}
+};
+
+Player.prototype.win = function() {
+  this.wins++;
+  document.getElementById('score').innerHTML = 'Score: ' + this.wins;
+  this.resetPlayer();
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
