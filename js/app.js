@@ -73,10 +73,14 @@ Player.prototype.update = function() {
   }
 };
 
+// Renders the player sprite on the canvas
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Takes a key parameter of which direction was pressed
+// and moves the player in that direction
+// If the player reaches the water (row(0)) calls Player.win() method
 Player.prototype.handleInput = function(key) {
   if (key === 'left' && this.x > column(0)) {
     this.x = this.x - TILE_WIDTH;
@@ -96,11 +100,13 @@ Player.prototype.handleInput = function(key) {
   }
 };
 
+// Places the player back to start
 Player.prototype.resetPlayer = function() {
   this.x = column(2);
   this.y = row(5);
 };
 
+// Increments score and resets player
 Player.prototype.win = function() {
   this.wins++;
   document.getElementById('score').innerHTML = 'Score: ' + this.wins;
