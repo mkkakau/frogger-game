@@ -53,10 +53,10 @@ Player.prototype.handleInput = function(key) {
     this.x = this.x + 101;
   }
   else if (key === 'up' && this.y > 0) {
-    this.y = this.y - 82;
+    this.y = this.y - 83;
   }
   else if (key === 'down' && this.y < 400) {
-    this.y = this.y + 82;
+    this.y = this.y + 83;
   }
 
   if(this.y === -10){
