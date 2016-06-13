@@ -53,6 +53,8 @@ var Player = function() {
   this.x = column(2);
   this.y = row(5);
   this.wins = 0;
+  this.deaths = 0;
+  this.score = 0;
 };
 
 // Handles collisions and resets on hit
@@ -64,10 +66,10 @@ Player.prototype.update = function() {
       var playerLeft = this.x + 10;
       var playerRight = this.x + 81;
       if (playerLeft >= enemyButt && playerLeft <= enemyHead) {
-        this.resetPlayer();
+        this.die();
       }
       if (playerRight >= enemyButt && playerRight <= enemyHead) {
-        this.resetPlayer();
+        this.die();
       }
     }
   }
@@ -106,11 +108,26 @@ Player.prototype.resetPlayer = function() {
   this.y = row(5);
 };
 
-// Increments score and resets player
+// Increments wins and resets player
 Player.prototype.win = function() {
   this.wins++;
-  document.getElementById('score').innerHTML = 'Score: ' + this.wins;
+  document.getElementById('wins').innerHTML = 'Wins: ' + this.wins;
+  this.updateScore();
   this.resetPlayer();
+};
+
+// Increments deaths and resets player
+Player.prototype.die = function() {
+  this.deaths++;
+  document.getElementById('deaths').innerHTML = 'Deaths: ' + this.deaths;
+  this.updateScore();
+  this.resetPlayer();
+};
+
+Player.prototype.updateScore = function() {
+  this.score = this.wins * 10 - this.deaths * 10;
+  document.getElementById('score').innerHTML = 'Score: ' + this.score;
+
 };
 
 // Now instantiate your objects.
