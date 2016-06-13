@@ -55,3 +55,28 @@ hr {
   font-family: 'Delius Unicase', sans-serif;
   text-shadow: 0 0 2px #006400;
 }
+
+#controls, #instructions {
+  margin: 0 auto;
+}
+
+.key {
+  text-shadow: 0 0 3px #bfa661;
+  color: white;
+  background-color: #eae7db;
+  text-align: center;
+  margin: 3px;
+  padding: 5px 7px;
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: 1px solid #dfd9c8;
+}
+
+.thumb {
+  width: 50px;
+}
+
+.description {
+  text-align: left;
+  padding: 22px 0 0 5px;
+}
