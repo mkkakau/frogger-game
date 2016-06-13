@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background-color: #333;
+  background-color: #eae7db;
 }
 
 #main {
@@ -12,7 +12,7 @@ body {
   min-height: 637px;
   background-color: #fff;
   margin: 5px;
-  border: 1px solid #000;
+  border: 2px solid #dfd9c8;
   border-radius: 10px;
 }
 
@@ -20,7 +20,7 @@ body {
   min-height: 637px;
   background-color: #fff;
   margin: 5px;
-  border: 1px solid #666;
+  border: 2px solid #dfd9c8;
   border-radius: 10px;
   padding: 10px;
 }
@@ -34,5 +34,22 @@ h2 {
 }
 
 hr {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #dfd9c8;
+}
+
+.navbar {
+  color: #fff;
+}
+
+.navbar-default {
+  background-color: #2fc881;
+  border-bottom: 1px solid #195A19;
+}
+
+.navbar-default .navbar-brand {
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Delius Unicase', sans-serif;
+  text-shadow: 0 0 2px #006400;
 }
