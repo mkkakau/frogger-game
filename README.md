@@ -18,3 +18,7 @@ Gameplay
 --------
 
 Use your keyboard arrows to move the player. Get to the water without hitting any enemies.
+
+Collaboration
+-------------
+Not currently seeking collaboration.
